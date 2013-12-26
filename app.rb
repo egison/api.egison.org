@@ -10,3 +10,10 @@ get '/version' do
   ret = { version: version }
   json ret
 end
+
+post '/eval/?' do
+  File.write("programs/test.egi", params[:program])
+  output = `egison programs/test.egi`.chop
+  ret = { output: output }
+  json ret
+end
