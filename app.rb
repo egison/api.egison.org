@@ -15,7 +15,7 @@ end
 
 post '/eval/?' do
   File.write("programs/test.egi", params[:program])
-  output = `timeout 3 egison -l programs/test.egi 2>&1`.chop
+  output = `timeout 5 egison -l programs/test.egi 2>&1`.chop
   if $?.exitstatus == 124
     output = "Timeout. We are limiting the resource for the online interprter."
   end
