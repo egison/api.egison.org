@@ -25,7 +25,7 @@ end
 
 get '/github' do
   github = Github.new
-  response = github.repos.get("egisatoshi", "egison3/contents/" + params[:path])
+  response = github.repos.get("egisatoshi", "egison/contents/" + params[:path])
   content = Base64.decode64(response.content)
   ret = { content: content }
   json ret
