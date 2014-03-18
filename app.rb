@@ -16,7 +16,7 @@ end
 post '/eval/?' do
   filename = "programs/" + Time.now.strftime("%Y-%m-%d-%H-%M-%S-%L");
   File.write(filename, params[:program])
-  output = `timeout 5 egison -l #{filename} 2>&1`.chop
+  output = `timeout 5 egison --no-io -l #{filename} 2>&1`.chop
   if $?.exitstatus == 124
     output = "Timeout. We are limiting the resource for the online interprter."
   end
