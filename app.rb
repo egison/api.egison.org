@@ -37,3 +37,15 @@ get '/source' do
   ret = { content: content }
   json ret
 end
+
+get '/tutorial' do
+  output = `egison-tutorial -s #{params[:sn]} -c #{params[:ssn]} 2>&1`.chop
+  ret = { output: output }
+  json ret
+end
+
+get '/tutorial/table' do
+  output = `egison-tutorial -l 2>&1`.chop
+  ret = { output: output }
+  json ret
+end
