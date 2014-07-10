@@ -25,7 +25,6 @@ post '/eval/?' do
 end
 
 post '/subscribe/?' do
-  p "test"
   filename = "mailing-list/" + Time.now.strftime("%Y-%m-%d-%H-%M-%S-%L");
   File.write(filename, params[:email] + "\n")
   ret = { output: "ok" }
