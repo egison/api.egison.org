@@ -24,6 +24,14 @@ post '/eval/?' do
   json ret
 end
 
+post '/subscribe/?' do
+  p "test"
+  filename = "mailing-list/" + Time.now.strftime("%Y-%m-%d-%H-%M-%S-%L");
+  File.write(filename, params[:email] + "\n")
+  ret = { output: "ok" }
+  json ret
+end
+
 get '/github' do
   github = Github.new
   response = github.repos.get("egisatoshi", "egison/contents/" + params[:path])
