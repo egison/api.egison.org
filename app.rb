@@ -25,7 +25,7 @@ post '/eval/?' do
 end
 
 post '/eval2/?' do
-  filename = "programs/" + Time.now.strftime("%Y-%m-%d-%H-%M-%S-%L");
+  filename = "tutorial/" + Time.now.strftime("%Y-%m-%d-%H-%M-%S-%L");
   File.write(filename, params[:program])
   output = `timeout 1 nice egison --no-io -t #{filename} 2>&1`.chop
   if $?.exitstatus == 124
